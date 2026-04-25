@@ -18,6 +18,21 @@ body {
   color: var(--text);
 }
 
+.container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.section {
+  padding: 120px 0;
+}
+
 /* NAV */
 .nav {
   display: flex;
@@ -64,6 +79,12 @@ body {
   border-radius: 16px;
 }
 
+@media (max-width: 900px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* SECTIONS */
 .section {
   padding: 120px 0;
@@ -81,7 +102,7 @@ body {
 }
 
 .case {
-  background: var(--surface);
+  background: #16171d;
   padding: 24px;
   border-radius: 12px;
   text-decoration: none;
@@ -102,6 +123,7 @@ body {
   transform: translateY(-10px) scale(1.02);
   box-shadow: 0 30px 80px rgba(0,0,0,0.5);
 }
+
 
 /* TAG */
 .tag {
@@ -134,6 +156,7 @@ body {
   transform: translateY(0);
 }
 
+
 /* PILL */
 .pill {
   border: 1px solid var(--text2);
@@ -143,3 +166,6 @@ body {
   color: var(--text2);
   display: inline-block;
 }
+
+
+
