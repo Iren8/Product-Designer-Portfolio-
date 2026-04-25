@@ -9,8 +9,9 @@
 
 <body>
 
+<!-- PAGE TRANSITION OVERLAY -->
 <div class="page-transition"></div>
-  
+
 <!-- SCROLL PROGRESS -->
 <div class="scroll-progress"></div>
 
@@ -37,15 +38,8 @@
       </h1>
 
       <p>
-        Across fintech, AI, and IoT products, I focus on reducing uncertainty
-        and making complex systems feel simple, reliable, and human.
+        Across fintech, AI, and IoT products, I focus on reducing uncertainty and making complex systems feel simple and reliable.
       </p>
-
-      <div class="hero__meta">
-        <div><strong>4+</strong><span>Years</span></div>
-        <div><strong>FinTech</strong><span>AI & SaaS</span></div>
-        <div><strong>End-to-end</strong><span>Product Design</span></div>
-      </div>
 
     </div>
 
@@ -58,22 +52,21 @@
 <section id="work" class="section reveal">
 
   <div class="container">
-
     <h2>Selected Work</h2>
 
     <div class="cases">
 
-      <a href="#" class="case reveal" data-delay="0">
+      <a href="case-banking.html" class="case reveal" data-delay="0">
         <div class="tag">Trust</div>
         <h3>Digital Banking App</h3>
         <p>Reducing uncertainty in financial flows</p>
-        <div class="result">+18% onboarding completion</div>
+        <div class="result">+18% onboarding</div>
       </a>
 
-      <a href="#" class="case highlight-case reveal" data-delay="1">
+      <a href="case-ai.html" class="case highlight-case reveal" data-delay="1">
         <div class="tag">Intelligence</div>
-        <h3>AI Call Center Platform</h3>
-        <p>AI supporting real-time decisions</p>
+        <h3>AI Call Center</h3>
+        <p>Real-time AI decision support</p>
         <div class="result">+35% efficiency</div>
       </a>
 
@@ -81,7 +74,7 @@
         <div class="tag">Control</div>
         <h3>Smart Home App</h3>
         <p>Turning complexity into control</p>
-        <div class="result">-30% task time</div>
+        <div class="result">-30% time</div>
       </a>
 
     </div>
@@ -121,51 +114,17 @@
 <!-- CONTACT -->
 <section id="contact" class="section reveal">
   <div class="container">
-
     <h2>Let’s work together</h2>
     <p>Open to product design roles in FinTech, AI, SaaS.</p>
-
   </div>
 </section>
 
 <!-- JS -->
 <script>
-/* ===== REVEAL ===== */
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-
-      const delay = entry.target.dataset.delay || 0;
-
-      setTimeout(() => {
-        entry.target.classList.add("visible");
-      }, delay * 150);
-
-    }
-  });
-}, { threshold: 0.15 });
-
-document.querySelectorAll(".reveal").forEach(el => {
-  observer.observe(el);
-});
-
-/* ===== PARALLAX ===== */
-window.addEventListener("scroll", () => {
-  const el = document.querySelector(".parallax");
-  if (!el) return;
-
-  const y = window.scrollY;
-  el.style.transform = `translateY(${y * 0.08}px)`;
-});
-
-/* ===== SCROLL PROGRESS ===== */
-window.addEventListener("scroll", () => {
-  const scrollTop = window.scrollY;
-  const docHeight = document.body.scrollHeight - window.innerHeight;
-  const progress = (scrollTop / docHeight) * 100;
-
-  document.querySelector(".scroll-progress").style.width = progress + "%";
-});
+/* =========================
+   PAGE TRANSITIONS (Stripe)
+========================= */
+const overlay = document.querySelector(".page-transition");
 
 document.querySelectorAll("a[href]").forEach(link => {
   link.addEventListener("click", (e) => {
@@ -185,6 +144,49 @@ document.querySelectorAll("a[href]").forEach(link => {
 
 window.addEventListener("pageshow", () => {
   overlay.style.transform = "scaleY(0)";
+});
+
+/* =========================
+   REVEAL + STAGGER
+========================= */
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+
+      const delay = entry.target.dataset.delay || 0;
+
+      setTimeout(() => {
+        entry.target.classList.add("visible");
+      }, delay * 150);
+
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll(".reveal").forEach(el => {
+  observer.observe(el);
+});
+
+/* =========================
+   PARALLAX HERO
+========================= */
+window.addEventListener("scroll", () => {
+  const el = document.querySelector(".parallax");
+  if (!el) return;
+
+  const y = window.scrollY;
+  el.style.transform = `translateY(${y * 0.08}px)`;
+});
+
+/* =========================
+   SCROLL PROGRESS (Apple)
+========================= */
+window.addEventListener("scroll", () => {
+  const scrollTop = window.scrollY;
+  const docHeight = document.body.scrollHeight - window.innerHeight;
+  const progress = (scrollTop / docHeight) * 100;
+
+  document.querySelector(".scroll-progress").style.width = progress + "%";
 });
 </script>
 
