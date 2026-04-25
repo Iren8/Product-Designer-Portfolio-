@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Product Designer Portfolio</title>
-  <link rel="stylesheet" href="styles.css"/>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Product Designer Portfolio</title>
+<link rel="stylesheet" href="styles.css"/>
 </head>
 
 <body>
 
-<!-- PAGE TRANSITION OVERLAY -->
+<!-- TRANSITION -->
 <div class="page-transition"></div>
 
-<!-- SCROLL PROGRESS -->
+<!-- PROGRESS -->
 <div class="scroll-progress"></div>
 
 <!-- NAV -->
-<header class="nav">
-  <div class="nav__logo">Irina Shytsik</div>
+<header class="nav container">
+  <div class="logo">Irina Shytsik</div>
   <nav>
     <a href="#work">Work</a>
     <a href="#philosophy">Approach</a>
@@ -27,31 +27,29 @@
 
 <!-- HERO -->
 <section class="hero reveal">
-  <div class="container hero__layout">
+  <div class="container hero-grid">
 
-    <div class="hero__content">
-
+    <div class="hero-content">
       <div class="pill">Product Designer · FinTech · AI · Systems</div>
 
       <h1>
-        I design complex systems where trust, intelligence, and control define the experience
+        I design systems where trust, intelligence and control define experience
       </h1>
 
       <p>
-        Across fintech, AI, and IoT products, I focus on reducing uncertainty and making complex systems feel simple and reliable.
+        FinTech, AI and IoT products focused on reducing uncertainty and simplifying complexity.
       </p>
-
     </div>
 
-    <div class="hero__visual parallax"></div>
+    <div class="hero-visual parallax"></div>
 
   </div>
 </section>
 
 <!-- WORK -->
 <section id="work" class="section reveal">
-
   <div class="container">
+
     <h2>Selected Work</h2>
 
     <div class="cases">
@@ -60,27 +58,23 @@
         <div class="tag">Trust</div>
         <h3>Digital Banking App</h3>
         <p>Reducing uncertainty in financial flows</p>
-        <div class="result">+18% onboarding</div>
       </a>
 
-      <a href="case-ai.html" class="case highlight-case reveal" data-delay="1">
+      <a href="case-ai.html" class="case reveal" data-delay="1">
         <div class="tag">Intelligence</div>
         <h3>AI Call Center</h3>
         <p>Real-time AI decision support</p>
-        <div class="result">+35% efficiency</div>
       </a>
 
-      <a href="#" class="case reveal" data-delay="2">
+      <a href="case-smart-home.html" class="case reveal" data-delay="2">
         <div class="tag">Control</div>
         <h3>Smart Home App</h3>
         <p>Turning complexity into control</p>
-        <div class="result">-30% time</div>
       </a>
 
     </div>
 
   </div>
-
 </section>
 
 <!-- PHILOSOPHY -->
@@ -91,20 +85,9 @@
 
     <div class="grid">
 
-      <div class="card">
-        <h3>Trust over speed</h3>
-        <p>Clarity matters more than efficiency in critical systems.</p>
-      </div>
-
-      <div class="card">
-        <h3>Systems over screens</h3>
-        <p>Design is about connected experiences, not UI pieces.</p>
-      </div>
-
-      <div class="card">
-        <h3>Reduce uncertainty</h3>
-        <p>Every decision should remove ambiguity.</p>
-      </div>
+      <div class="card">Trust over speed</div>
+      <div class="card">Systems over screens</div>
+      <div class="card">Reduce uncertainty</div>
 
     </div>
 
@@ -113,19 +96,41 @@
 
 <!-- CONTACT -->
 <section id="contact" class="section reveal">
-  <div class="container">
-    <h2>Let’s work together</h2>
-    <p>Open to product design roles in FinTech, AI, SaaS.</p>
+  <div class="container contact">
+
+    <h2>Let’s build something meaningful</h2>
+
+    <p>
+      I’m open to senior product design roles in FinTech, AI and complex systems.
+    </p>
+
+    <div class="contact-card">
+
+      <div>
+        <h3>Email</h3>
+        <p>irinashytsik@gmail.com</p>
+      </div>
+
+      <div>
+        <h3>Location</h3>
+        <p>Europe / Remote</p>
+      </div>
+
+      <div>
+        <h3>Focus</h3>
+        <p>Product · Systems · AI UX</p>
+      </div>
+
+    </div>
+
   </div>
 </section>
 
 <!-- JS -->
 <script>
-/* =========================
-   PAGE TRANSITIONS (Stripe)
-========================= */
 const overlay = document.querySelector(".page-transition");
 
+/* TRANSITION */
 document.querySelectorAll("a[href]").forEach(link => {
   link.addEventListener("click", (e) => {
 
@@ -146,41 +151,26 @@ window.addEventListener("pageshow", () => {
   overlay.style.transform = "scaleY(0)";
 });
 
-/* =========================
-   REVEAL + STAGGER
-========================= */
+/* REVEAL */
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-
       const delay = entry.target.dataset.delay || 0;
-
-      setTimeout(() => {
-        entry.target.classList.add("visible");
-      }, delay * 150);
-
+      setTimeout(() => entry.target.classList.add("visible"), delay * 120);
     }
   });
 }, { threshold: 0.15 });
 
-document.querySelectorAll(".reveal").forEach(el => {
-  observer.observe(el);
-});
+document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
 
-/* =========================
-   PARALLAX HERO
-========================= */
+/* PARALLAX */
 window.addEventListener("scroll", () => {
-  const el = document.querySelector(".parallax");
-  if (!el) return;
-
-  const y = window.scrollY;
-  el.style.transform = `translateY(${y * 0.08}px)`;
+  document.querySelectorAll(".parallax").forEach(el => {
+    el.style.transform = `translateY(${window.scrollY * 0.06}px)`;
+  });
 });
 
-/* =========================
-   SCROLL PROGRESS (Apple)
-========================= */
+/* PROGRESS */
 window.addEventListener("scroll", () => {
   const scrollTop = window.scrollY;
   const docHeight = document.body.scrollHeight - window.innerHeight;
