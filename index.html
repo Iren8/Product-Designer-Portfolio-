@@ -191,6 +191,39 @@ window.addEventListener("scroll", () => {
   const progress = (scrollTop / docHeight) * 100;
   document.querySelector(".scroll-progress").style.width = progress + "%";
 });
+
+
+const cases = document.querySelectorAll(".case");
+
+cases.forEach((card) => {
+
+  let rect;
+
+  card.addEventListener("mousemove", (e) => {
+    rect = card.getBoundingClientRect();
+
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+
+    const moveX = (x - centerX) / 10;
+    const moveY = (y - centerY) / 10;
+
+    card.style.transform = `translate(${moveX}px, ${moveY}px) translateY(-6px)`;
+
+    /* glow tracking */
+    card.style.setProperty("--x", `${x}px`);
+    card.style.setProperty("--y", `${y}px`);
+  });
+
+  card.addEventListener("mouseleave", () => {
+    card.style.transform = "translate(0px, 0px)";
+  });
+
+});
+  
 </script>
   
 </div>
