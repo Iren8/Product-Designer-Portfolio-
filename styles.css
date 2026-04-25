@@ -127,7 +127,7 @@ html {
   background: radial-gradient(
     600px circle at var(--x, 50%) var(--y, 50%),
     rgba(0, 212, 255, 0.35),
-    transparent 40%
+    transparent 20%
   );
 
   opacity: 0;
