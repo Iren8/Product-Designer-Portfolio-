@@ -166,3 +166,51 @@ body {
     0 30px 80px rgba(0,0,0,0.5),
     0 0 40px rgba(0,255,200,0.2);
 }*/
+
+.case-hero {
+  padding: 80px 0;
+}
+
+.case-hero h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  color: var(--text2);
+  margin-bottom: 30px;
+}
+
+.case-metrics {
+  display: flex;
+  gap: 20px;
+}
+
+.case-section {
+  padding: 60px 0;
+}
+
+.case-section.dark {
+  background: #111;
+}
+
+.solution-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.solution {
+  background: var(--surface);
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.impact {
+  list-style: none;
+  padding: 0;
+}
+
+.impact li {
+  margin-bottom: 10px;
+}
