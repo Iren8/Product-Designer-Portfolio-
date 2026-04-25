@@ -8,14 +8,6 @@
 </head>
 
 
-
-<section id="philosophy" class="section dark reveal">
-<section id="contact" class="section reveal">
-
-<a href="case-banking.html" class="case reveal">
-<a href="case-ai.html" class="case highlight-case reveal">
-<a href="case-smart-home.html" class="case reveal">
-
 <body>
 
 <!-- NAV -->
@@ -70,7 +62,7 @@
 
     </div>
 
-    <div class="hero__visual">
+    <div class="hero__visual parallax">
       <div class="system-mock">
         <div class="node n1"></div>
         <div class="node n2"></div>
@@ -94,7 +86,7 @@
     <div class="cases">
 
       <!-- CASE 1 -->
-      <a href="case-banking.html" class="case">
+       <a href="case-banking.html" class="case reveal" data-delay="0">
         <div class="tag">Trust</div>
         <h3>Digital Banking App</h3>
         <p class="desc">
@@ -104,7 +96,7 @@
       </a>
 
       <!-- CASE 2 -->
-      <a href="case-ai.html" class="case highlight-case">
+      <a href="case-ai.html" class="case reveal" data-delay="1">
         <div class="tag">Intelligence</div>
         <h3>AI Call Center Platform</h3>
         <p class="desc">
@@ -114,7 +106,7 @@
       </a>
 
       <!-- CASE 3 -->
-      <a href="case-smart-home.html" class="case">
+      <a href="case-smart-home.html" class="case reveal" data-delay="2">
         <div class="tag">Control</div>
         <h3>Smart Home App</h3>
         <p class="desc">
@@ -180,20 +172,39 @@
   </div>
 </section>
 
+
 <script>
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
+      
+      const delay = entry.target.dataset.delay || 0;
+
+      setTimeout(() => {
+        entry.target.classList.add('visible');
+      }, delay * 150);
+
     }
   });
 }, {
   threshold: 0.15
 });
 
-document.querySelectorAll('.reveal').forEach(el => {
+document.querySelectorAll('.case.reveal').forEach(el => {
   observer.observe(el);
 });
+
+
+
+window.addEventListener("scroll", () => {
+  const el = document.querySelector(".parallax");
+  const scrollY = window.scrollY;
+
+  if (!el) return;
+
+  el.style.transform = `translateY(${scrollY * 0.08}px)`;
+});
+  
 </script>
 
   
