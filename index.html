@@ -7,13 +7,14 @@
   <link rel="stylesheet" href="styles.css"/>
 </head>
 
-
 <body>
+
+<!-- SCROLL PROGRESS -->
+<div class="scroll-progress"></div>
 
 <!-- NAV -->
 <header class="nav">
   <div class="nav__logo">Irina Shytsik</div>
-
   <nav>
     <a href="#work">Work</a>
     <a href="#philosophy">Approach</a>
@@ -38,116 +39,76 @@
         and making complex systems feel simple, reliable, and human.
       </p>
 
-      <div class="hero__cta">
-        <a href="#work" class="btn primary">View Work</a>
-        <a href="#philosophy" class="btn ghost">How I Work</a>
-      </div>
-
       <div class="hero__meta">
-        <div>
-          <strong>4+</strong>
-          <span>Years experience</span>
-        </div>
-
-        <div>
-          <strong>FinTech</strong>
-          <span>AI & SaaS systems</span>
-        </div>
-
-        <div>
-          <strong>End-to-end</strong>
-          <span>Product design</span>
-        </div>
+        <div><strong>4+</strong><span>Years</span></div>
+        <div><strong>FinTech</strong><span>AI & SaaS</span></div>
+        <div><strong>End-to-end</strong><span>Product Design</span></div>
       </div>
 
     </div>
 
-    <div class="hero__visual parallax">
-      <div class="system-mock">
-        <div class="node n1"></div>
-        <div class="node n2"></div>
-        <div class="node n3"></div>
-        <div class="connection"></div>
-      </div>
-    </div>
+    <div class="hero__visual parallax"></div>
 
   </div>
 </section>
 
 <!-- WORK -->
 <section id="work" class="section reveal">
+
   <div class="container">
 
-    <div class="section-title">
-      <h2>Selected Work</h2>
-      <p>Three systems, three different layers of complexity</p>
-    </div>
+    <h2>Selected Work</h2>
 
     <div class="cases">
 
-      <!-- CASE 1 -->
-       <a href="case-banking.html" class="case reveal" data-delay="0">
+      <a href="#" class="case reveal" data-delay="0">
         <div class="tag">Trust</div>
         <h3>Digital Banking App</h3>
-        <p class="desc">
-          Reducing uncertainty in high-risk financial interactions
-        </p>
+        <p>Reducing uncertainty in financial flows</p>
         <div class="result">+18% onboarding completion</div>
       </a>
 
-      <!-- CASE 2 -->
-      <a href="case-ai.html" class="case reveal" data-delay="1">
+      <a href="#" class="case highlight-case reveal" data-delay="1">
         <div class="tag">Intelligence</div>
         <h3>AI Call Center Platform</h3>
-        <p class="desc">
-          Designing AI that supports human decision-making in real time
-        </p>
-        <div class="result">+35% agent efficiency</div>
+        <p>AI supporting real-time decisions</p>
+        <div class="result">+35% efficiency</div>
       </a>
 
-      <!-- CASE 3 -->
-      <a href="case-smart-home.html" class="case reveal" data-delay="2">
+      <a href="#" class="case reveal" data-delay="2">
         <div class="tag">Control</div>
         <h3>Smart Home App</h3>
-        <p class="desc">
-          Turning complex systems into intuitive everyday control
-        </p>
-        <div class="result">-30% time to action</div>
+        <p>Turning complexity into control</p>
+        <div class="result">-30% task time</div>
       </a>
 
     </div>
+
   </div>
+
 </section>
 
 <!-- PHILOSOPHY -->
 <section id="philosophy" class="section dark reveal">
   <div class="container">
 
-    <div class="section-title">
-      <h2>Design Philosophy</h2>
-    </div>
+    <h2>Design Philosophy</h2>
 
-    <div class="philosophy-grid">
+    <div class="grid">
 
       <div class="card">
         <h3>Trust over speed</h3>
-        <p>
-          In high-stakes systems, clarity and trust matter more than efficiency.
-        </p>
+        <p>Clarity matters more than efficiency in critical systems.</p>
       </div>
 
       <div class="card">
         <h3>Systems over screens</h3>
-        <p>
-          I design connected experiences, not isolated UI components.
-        </p>
+        <p>Design is about connected experiences, not UI pieces.</p>
       </div>
 
       <div class="card">
-        <h3>Reduction of uncertainty</h3>
-        <p>
-          Every design decision should reduce cognitive load and ambiguity.
-        </p>
+        <h3>Reduce uncertainty</h3>
+        <p>Every decision should remove ambiguity.</p>
       </div>
 
     </div>
@@ -160,53 +121,50 @@
   <div class="container">
 
     <h2>Let’s work together</h2>
-
-    <p>
-      Open to senior product design roles in FinTech, AI, and complex systems.
-    </p>
-
-    <a href="mailto:irinashytsik@gmail.com" class="btn primary">
-      Get in touch
-    </a>
+    <p>Open to product design roles in FinTech, AI, SaaS.</p>
 
   </div>
 </section>
 
-
+<!-- JS -->
 <script>
+/* ===== REVEAL ===== */
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      
+
       const delay = entry.target.dataset.delay || 0;
 
       setTimeout(() => {
-        entry.target.classList.add('visible');
+        entry.target.classList.add("visible");
       }, delay * 150);
 
     }
   });
-}, {
-  threshold: 0.15
-});
+}, { threshold: 0.15 });
 
-document.querySelectorAll('.case.reveal').forEach(el => {
+document.querySelectorAll(".reveal").forEach(el => {
   observer.observe(el);
 });
 
-
-
+/* ===== PARALLAX ===== */
 window.addEventListener("scroll", () => {
   const el = document.querySelector(".parallax");
-  const scrollY = window.scrollY;
-
   if (!el) return;
 
-  el.style.transform = `translateY(${scrollY * 0.08}px)`;
+  const y = window.scrollY;
+  el.style.transform = `translateY(${y * 0.08}px)`;
 });
-  
+
+/* ===== SCROLL PROGRESS ===== */
+window.addEventListener("scroll", () => {
+  const scrollTop = window.scrollY;
+  const docHeight = document.body.scrollHeight - window.innerHeight;
+  const progress = (scrollTop / docHeight) * 100;
+
+  document.querySelector(".scroll-progress").style.width = progress + "%";
+});
 </script>
 
-  
 </body>
 </html>
