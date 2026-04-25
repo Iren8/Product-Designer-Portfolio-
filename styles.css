@@ -160,3 +160,9 @@ body {
   border: 1px solid var(--text2);
   color: var(--text2);
 }
+
+.case:hover {
+  box-shadow:
+    0 30px 80px rgba(0,0,0,0.5),
+    0 0 40px rgba(0,255,200,0.2);
+}
