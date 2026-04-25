@@ -3,13 +3,6 @@
    Concept: Precision & Trust
    =================================================== */
 
-/* --- RESET & BASE --- */
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
 :root {
   --bg: #0b0c10;
   --surface: #16171d;
@@ -32,7 +25,7 @@ body {
   padding: 20px 40px;
 }
 
-/* PROGRESS BAR */
+/* PROGRESS */
 .scroll-progress {
   position: fixed;
   top: 0;
@@ -41,6 +34,17 @@ body {
   width: 0%;
   background: var(--accent);
   z-index: 9999;
+}
+
+/* PAGE TRANSITION */
+.page-transition {
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  z-index: 9999;
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 /* HERO */
@@ -58,11 +62,7 @@ body {
   font-size: 3rem;
 }
 
-.hero p {
-  color: var(--text2);
-}
-
-/* HERO VISUAL */
+/* VISUAL */
 .hero__visual {
   height: 300px;
   background: var(--surface);
@@ -91,9 +91,11 @@ body {
   border-radius: 12px;
   text-decoration: none;
   color: white;
-  transition: 0.4s;
+
   opacity: 0;
   transform: translateY(30px);
+
+  transition: all 0.4s ease;
 }
 
 .case.visible {
@@ -102,7 +104,7 @@ body {
 }
 
 .case:hover {
-  transform: translateY(-8px) scale(1.02);
+  transform: translateY(-10px) scale(1.02);
   box-shadow: 0 30px 80px rgba(0,0,0,0.5);
 }
 
